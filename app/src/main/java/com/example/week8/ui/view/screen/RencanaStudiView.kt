@@ -15,19 +15,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -57,29 +62,43 @@ fun RencanaStudyView(
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .background(16.dp), verticalAlignment = Alignment.CenterVertically
+            .background(color = colorResource(R.color.greenTerang))
     ) {
-        Image(
-            painter = painterResource(R.drawable.aku),
-            contentDescription = "",
+        Row (
             modifier = Modifier
-                .clip(shape = CircleShape)
-                .size(50.dp)
-        )
-        Spacer(modifier = Modifier.padding(start = 16.dp))
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = mahasiswa.nama,
-                fontWeight = FontWeight.Bold,
-                fontSize = 15.sp,
-                color = Color.White
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Image(
+                painter = painterResource(R.drawable.aku),
+                contentDescription = "",
+                modifier = Modifier
+                    .clip(shape = CircleShape)
+                    .size(50.dp)
             )
-            Text(
-                text = mahasiswa.nim,
-                fontWeight = FontWeight.Light,
-                fontSize = 12.sp,
-                color = Color.White
-            )
+            Spacer(modifier = Modifier.padding(start = 16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = mahasiswa.nama,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp,
+                    color = Color.White
+                )
+                Text(
+                    text = mahasiswa.nim,
+                    fontWeight = FontWeight.Light,
+                    fontSize = 12.sp,
+                    color = Color.White
+                )
+            }
+            Box {
+                Icon(
+                    imageVector = Icons.Filled.Notifications,
+                    contentDescription = "",
+                    tint = Color.White
+                )
+            }
         }
         Box(
             modifier = Modifier

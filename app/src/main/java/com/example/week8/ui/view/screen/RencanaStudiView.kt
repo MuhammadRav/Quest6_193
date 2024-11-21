@@ -42,6 +42,7 @@ import com.example.week8.R
 import com.example.week8.data.MataKuliah
 import com.example.week8.data.RuangKelas
 import com.example.week8.model.Mahasiswa
+import com.example.week8.ui.widget.DynamicSelectTextField
 
 @Composable
 fun RencanaStudyView(
@@ -188,7 +189,7 @@ fun RencanaStudyView(
                         Text("Kembali")
                     }
                     Button(
-                        onClick = { onBackButtonClicked(listData) },
+                        onClick = { onSubmitButtonClicked(listData) },
                         enabled = checked
                     ) {
                         Text("Lanjut")

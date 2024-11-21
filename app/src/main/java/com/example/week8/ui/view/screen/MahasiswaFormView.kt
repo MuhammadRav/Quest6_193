@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Info
@@ -33,6 +34,8 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -110,11 +113,10 @@ fun MahasiswaFormView(
                     fontWeight = FontWeight.Light,
                     color = Color.DarkGray
                 )
-
+                Spacer(modifier = Modifier.padding(8.dp))
                 OutlinedTextField(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    shape = RoundedCornerShape(50.dp),
                     value = nim,
                     onValueChange = {nim = it},
                     label = {
@@ -124,12 +126,19 @@ fun MahasiswaFormView(
                             imageVector = Icons.Filled.Info,
                             contentDescription = ""
                         )
-                    }
-                )
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Next
+                    ),
+                    singleLine = true,
+                    shape = RoundedCornerShape(50.dp),
+                    )
+
+                Spacer(modifier = Modifier.padding(4.dp))
                 OutlinedTextField(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    shape = RoundedCornerShape(50.dp),
                     value = nama,
                     onValueChange = {nama = it},
                     label = {
@@ -139,22 +148,35 @@ fun MahasiswaFormView(
                             imageVector = Icons.Filled.Person,
                             contentDescription = ""
                         )
-                    }
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Next
+                    ),
+                    singleLine = true,
+                    shape = RoundedCornerShape(50.dp),
                 )
+                Spacer(modifier = Modifier.padding(4.dp))
                 OutlinedTextField(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    shape = RoundedCornerShape(50.dp),
+
                     value = email,
                     onValueChange = {email = it},
                     label = {
-                        Text("Masukkan Email")},
+                        Text("Masukkan Email Mahasiswa")},
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Filled.Email,
                             contentDescription = ""
                         )
-                    }
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Next
+                    ),
+                    singleLine = true,
+                    shape = RoundedCornerShape(50.dp),
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Row (
@@ -165,7 +187,7 @@ fun MahasiswaFormView(
                     Button(onClick = {onbackbuttonClicked()}) {
                         Text("Kembali")
                     }
-                    Button(onClick = {onSubmitButton}) {
+                    Button(onClick = {onSubmitButtonButtonClicked(listData)}) {
                         Text("Simpan")
                     }
                 }

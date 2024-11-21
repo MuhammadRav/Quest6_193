@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Week8Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
+                    MahasiswaApp(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )

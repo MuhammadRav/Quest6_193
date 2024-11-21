@@ -2,12 +2,14 @@ package com.example.week8.ui.view.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -66,6 +68,33 @@ fun RencanaStudyView(
                 fontSize = 12.sp,
                 color = Color.White
             )
+        }
+        Box (
+            modifier = Modifier
+                .background(
+                    color = Color.White,
+                    shape = RoundedCornerShape(
+                        topEnd = 15.dp,
+                        topStart = 15.dp
+                    )
+                )
+                .fillMaxSize()
+        ){
+            Column (
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            ){
+                Text("Pilih Mata Kuliah Peminatan",
+                    fontWeight = FontWeight.Bold
+                    )
+                Text(
+                    "Silahkan pilih mata kuliah yang anda inginkan",
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Light
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
+            }
         }
     }
 }

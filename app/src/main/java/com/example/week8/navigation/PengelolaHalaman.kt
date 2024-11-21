@@ -16,13 +16,16 @@ import com.example.week8.ui.view.viewmodel.MahasiswaViewModel
 
 enum class Halaman{
     Splash,
-    Mahasiswa
+    Mahasiswa,
+    Matakuliah,
+    Tampil
 }
 
 @Composable
 fun MahasiswaApp(
     modifier: Modifier = Modifier,
     mahasiswaViewModel: MahasiswaViewModel = viewModel(),
+    krsViewModel: RencanaStudyViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ){
     val mahasiswaUiState = mahasiswaViewModel.mahasiswaUiState.collectAsState().value
@@ -39,10 +42,17 @@ fun MahasiswaApp(
                 )
             })
         }
-        composable(route = Halaman.Splash.name){
+        composable(route = Halaman.Mahasiswa.name){
             MahasiswaFormView(
-                onSubmitButton =
-            ) { }
+                onSubmitButtonClicked = {
+                    mahasiswaViewModel.saveDataMahasiswa(it)
+                    navController.navigate(Halaman.Matakuliah.name)
+                },
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
+
     }
 }

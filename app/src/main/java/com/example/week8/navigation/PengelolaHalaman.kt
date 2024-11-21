@@ -11,8 +11,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.week8.model.Mahasiswa
 import com.example.week8.ui.view.screen.MahasiswaFormView
+import com.example.week8.ui.view.screen.RencanaStudyView
 import com.example.week8.ui.view.screen.SplashView
 import com.example.week8.ui.view.viewmodel.MahasiswaViewModel
+import com.example.week8.ui.view.viewmodel.RencanaStudyViewModel
 
 enum class Halaman{
     Splash,

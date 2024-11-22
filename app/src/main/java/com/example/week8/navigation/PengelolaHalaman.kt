@@ -13,6 +13,7 @@ import com.example.week8.model.Mahasiswa
 import com.example.week8.ui.view.screen.MahasiswaFormView
 import com.example.week8.ui.view.screen.RencanaStudyView
 import com.example.week8.ui.view.screen.SplashView
+import com.example.week8.ui.view.screen.Tampil
 import com.example.week8.ui.view.viewmodel.MahasiswaViewModel
 import com.example.week8.ui.view.viewmodel.RencanaStudyViewModel
 
@@ -31,6 +32,7 @@ fun MahasiswaApp(
     navController: NavHostController = rememberNavController()
 ){
     val mahasiswaUiState = mahasiswaViewModel.mahasiswaUiState.collectAsState().value
+
 
     NavHost(
         navController = navController,
@@ -58,7 +60,17 @@ fun MahasiswaApp(
         composable(route = Halaman.Matakuliah.name){
             RencanaStudyView(
                 mahasiswa = mahasiswaUiState,
-                onSubmitButtonClicked = { krsViewModel.saveDataKRS(it) },
+                onSubmitButtonClicked = {
+                    krsViewModel.saveDataKRS(it)
+                    navController.navigate(Halaman.Tampil.name)
+                                        },
+                onBackButtonClicked = { navController.popBackStack() }
+            )
+        }
+        composable(route = Halaman.Tampil.name){
+            Tampil(
+                mhs = mahasiswaUiState,
+
                 onBackButtonClicked = { navController.popBackStack() }
             )
         }
